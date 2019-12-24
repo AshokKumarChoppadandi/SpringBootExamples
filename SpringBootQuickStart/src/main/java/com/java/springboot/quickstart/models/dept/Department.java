@@ -1,4 +1,4 @@
-package com.java.springboot.quickstart.dept;
+package com.java.springboot.quickstart.models.dept;
 
 public class Department {
     private int dId;

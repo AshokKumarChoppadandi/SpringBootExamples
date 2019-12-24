@@ -1,7 +1,7 @@
 package com.java.springboot.quickstart.controller;
 
 import com.java.springboot.quickstart.business.DepartmentService;
-import com.java.springboot.quickstart.dept.Department;
+import com.java.springboot.quickstart.models.dept.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

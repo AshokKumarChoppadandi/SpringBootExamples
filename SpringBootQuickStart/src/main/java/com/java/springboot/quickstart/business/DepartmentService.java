@@ -1,6 +1,6 @@
 package com.java.springboot.quickstart.business;
 
-import com.java.springboot.quickstart.dept.Department;
+import com.java.springboot.quickstart.models.dept.Department;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
