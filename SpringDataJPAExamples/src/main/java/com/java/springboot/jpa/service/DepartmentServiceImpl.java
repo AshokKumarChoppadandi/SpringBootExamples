@@ -1,6 +1,8 @@
 package com.java.springboot.jpa.service;
 
 import com.java.springboot.jpa.entity.Department;
+import com.java.springboot.jpa.repository.DepartmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,9 +11,10 @@ import java.util.List;
 @Service
 public class DepartmentServiceImpl implements IDepartmentService {
 
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     private List<Department> departments = new ArrayList<>();
-
 
     @Override
     public List<Department> getAllDepartments() {
@@ -55,5 +58,37 @@ public class DepartmentServiceImpl implements IDepartmentService {
     @Override
     public void deleteDepartment(Integer departmentId) {
         departments.removeIf(department -> department.getId() == departmentId);
+    }
+
+    @Override
+    public List<Department> getAllDepartmentsFromDB() {
+        List<Department> departments = new ArrayList<>();
+        departmentRepository.findAll().forEach(departments::add);
+
+        return departments;
+    }
+
+    @Override
+    public Department getDepartmentDetailsFromDB(Integer departmentId) {
+        return departmentRepository.findById(departmentId).orElseGet(Department::new);
+    }
+
+    @Override
+    public void addDepartmentToDB(Department department) {
+        departmentRepository.save(department);
+    }
+
+    @Override
+    public void updateDepartmentInDB(Integer departmentId, Department department) {
+        Department department1 = departmentRepository.findById(departmentId).orElseThrow(() -> new RuntimeException("Error: No Record to Update with the given Id"));
+        department1.setName(department.getName());
+        department1.setDescription(department.getDescription());
+
+        departmentRepository.save(department1);
+    }
+
+    @Override
+    public void deleteDepartmentFromDB(Integer departmentId) {
+        departmentRepository.deleteById(departmentId);
     }
 }
