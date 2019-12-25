@@ -5,11 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "employees", schema = "springboot")
 public class Employee {
+    @Id
+    @Column(name = "emp_id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "salary")
     private Integer salary;
-    //private Department department;
-
+    /*@ManyToOne
+    private Department department;*/
 
     public Employee() {}
 
@@ -19,8 +23,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    @Id
-    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -29,8 +31,6 @@ public class Employee {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -39,8 +39,6 @@ public class Employee {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "salary")
     public Integer getSalary() {
         return salary;
     }

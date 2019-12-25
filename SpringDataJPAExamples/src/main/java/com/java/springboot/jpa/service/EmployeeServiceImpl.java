@@ -14,6 +14,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    /*@Override
+    public List<Employee> getAllEmployeesForDeptFromDB(Integer dept) {
+        return employeeRepository.findByDepartmentId(dept);
+    }*/
+
     @Override
     public List<Employee> getAllEmployeesFromDB() {
         return employeeRepository.findAll();

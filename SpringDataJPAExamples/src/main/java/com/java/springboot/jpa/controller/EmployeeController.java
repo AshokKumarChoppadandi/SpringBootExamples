@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/org_chart/department")
+@RequestMapping(path = "/org_chart")
 public class EmployeeController {
 
     @Autowired
     private IEmployeeService iEmployeeService;
 
-    @GetMapping(path = "/get_add_employees_from_db")
-    public List<Employee> getAllEmployeesFromDB() {
+    @GetMapping(path = "/{dept}/get_add_employees_from_db")
+    public List<Employee> getAllEmployeesFromDB(@PathVariable Integer dept) {
+        //return iEmployeeService.getAllEmployeesForDeptFromDB(dept);\
         return iEmployeeService.getAllEmployeesFromDB();
     }
 
